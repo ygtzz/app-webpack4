@@ -1,0 +1,17 @@
+.gray{color:#B1B5B9}
+/*icon*/
+.icon-arrow-right{background-image:url('./views/common/arrow-right@2x.png');
+width:15px;height:23px;}
+.icon-limit{background-image:url('./views/common/limit@2x.png');
+        color:#fff;
+        font-size:22px;padding-left:19px;padding-right:10px;
+}
+.line{background:#dfdfdf;height:1px;width:50px;display:inline-block;}
+.text-info{height:80px;width:100%;line-height:80px;color:#cbcbcb;text-align:center;
+        letter-spacing:5px;
+        font-size:24px;
+        *{vertical-align:middle;}
+}
+.c-yellow{color:#ffa200}
+.c-orange{color:#f46200}
+img{background-image:url('./views/common/c-bg.jpg');background-size:100% 100%;}
