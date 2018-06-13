@@ -7,7 +7,6 @@ var config = require('./config');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var aPlugin = [
-    // new OpenBrowserPlugin({ url: 'http://localhost:' + config.dev.port }),
     //for dev show static images
     new CopyWebpackPlugin([{ from: 'src/static', to: 'static' }]),
     new webpack.DefinePlugin({
@@ -86,6 +85,7 @@ module.exports = merge(baseWebapckConfig,{
     plugins: aPlugin,
     devtool: 'cheap-source-map',
     devServer: {
+        open:               true, 
         contentBase:        config.sDist,
         port:               config.dev.port,
         hot:                true,
