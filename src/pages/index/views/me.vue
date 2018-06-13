@@ -123,7 +123,7 @@
         </div>
     </div>
 </template>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     .me{background:#f2f2f2;
         .header,.info,.panel{background:#fff}
         .header{height:560px;}

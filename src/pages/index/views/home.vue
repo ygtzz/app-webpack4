@@ -96,7 +96,7 @@
         </div>
     </div>
 </template>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     .home{background:#f2f2f2;width:100%;
         .header,.info,.panel{background:#fff}
         .header{}

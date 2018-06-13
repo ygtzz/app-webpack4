@@ -47,7 +47,7 @@ export default {
     }
 } 
 </script>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     $footHeight: 104px;
 
     #app{

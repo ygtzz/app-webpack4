@@ -105,7 +105,7 @@
         </div>
     </div>
 </template>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     .countdown{padding:15px 30px;border:1px solid #ccc;color:orange;font-size:50px;}
     .detail{background-color:#f2f2f2;height:100%;width:100%;}
     .header{height:560px;position:relative;

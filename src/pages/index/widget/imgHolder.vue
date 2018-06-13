@@ -22,7 +22,7 @@ export default {
     }
 }
 </script>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     .imgHolder{
         background-size:100%;
         img{width:100%}

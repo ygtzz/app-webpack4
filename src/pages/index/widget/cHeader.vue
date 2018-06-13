@@ -63,7 +63,7 @@ export default {
     }
 }
 </script>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     .header{
         background:linear-gradient(to bottom, #303036, #3c3b40);
         color:#efefef;

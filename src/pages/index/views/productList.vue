@@ -45,7 +45,7 @@
         </div>
     </div>
 </template>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     .productList{
         background-color:#f2f2f2;
     }

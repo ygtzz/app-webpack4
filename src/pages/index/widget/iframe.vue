@@ -46,7 +46,7 @@ export default {
     }
 }
 </script>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     .con{display:flex;flex-direction:column}
     .body{
         flex:1;

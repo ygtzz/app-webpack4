@@ -13,7 +13,7 @@ export default {
     name:'c-serachbar'
 }
 </script>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     .search_bar{padding:8px 10px;background-color:#efeff4;}
     .search{color:#b2b2b2;font-size:dpr(14px);background-color:#fff;line-height:2;text-align:center;border-radius:4px}
 </style>

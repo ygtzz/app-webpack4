@@ -18,7 +18,7 @@
         </div>
     </div>
 </template>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
     .scrollc{height:400px;width:100%;overflow:hidden;position:relative;}
     .scrolls{position:relative;}
     .scrolls-h .scroll-item{float:left;}
