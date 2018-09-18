@@ -167,12 +167,6 @@ module.exports = merge(baseWebapckConfig, {
                 //     chunks: 'async',
                 //     name: 'async-vendors'
                 // }
-                // vendor: {
-                //     test: /node_modules/,
-                //     name: "vendor",
-                //     priority: 10,
-                //     enforce: true
-                // },
                 // // 这里定义的是在分离前被引用过两次的文件，将其一同打包到common.js中，最小为30K
                 // common: {
                 //     name: "common",
