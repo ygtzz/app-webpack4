@@ -40,9 +40,9 @@
             <div class="body">
                 <div ref="fastWrapper" class="fast-wrap">
                     <ul class="fast-list">
-                        <li class="fast-item" v-for="item in model.fastData.data">
+                        <li class="fast-item" v-for="(item,index) in model.fastData.data" :key="'fast'+index">
                             <p class="fast-title">{{item.name}}({{item.days}})</p>
-                            <p class="c-orange f40">?2.6%~3.1%</p>
+                            <p class="c-orange f40">2.6%~3.1%</p>
                         </li>
                     </ul>
                 </div>
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div v-for="item in model.oldData.data" class="panel choice">
+        <div v-for="(item,index) in model.oldData.data" :key="'oldData'+index" class="panel choice">
             <div class="header">
                 <span class="f28 g3" v-text="item.title"></span>
                 <span class="r">
@@ -241,7 +241,7 @@ export default {
             });
         },
         'model.err'(val){
-            this.fNotifyError(this,val);
+            fNotifyError(this,val);
         }
     },
     computed:{

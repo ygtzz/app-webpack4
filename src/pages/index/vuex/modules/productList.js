@@ -53,7 +53,7 @@ const mutations = {
     },
     [types['getFinanceListData.error']](state, payload) {
         _.assign(state,{
-            loading:fasle,
+            loading:false,
             err:payload
         })
     }

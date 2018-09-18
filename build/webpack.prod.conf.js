@@ -1,10 +1,10 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var AssetsPlugin = require('assets-webpack-plugin');
 var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 var merge = require('webpack-merge');
 var WebpackChunkHash = require('webpack-chunk-hash');
-var MiniCssExtractPlugin = require("mini-css-extract-plugin") 
+var MiniCssExtractPlugin = require("mini-css-extract-plugin"); 
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var baseWebapckConfig = require('./webpack.base.conf');
 var config = require('./config');
 
@@ -21,13 +21,9 @@ var aPlugin = [
         __DEV__: JSON.stringify(JSON.parse('false'))
     }),
     new LodashModuleReplacementPlugin(),
-    new AssetsPlugin({
-      filename: config.sDest + '/map.json',
-      prettyPrint: true,
-      includeManifest: false
-    }),
     new webpack.HashedModuleIdsPlugin(),    
-    new WebpackChunkHash()
+    new WebpackChunkHash(),
+    new BundleAnalyzerPlugin()
 ];
 
 //html webpack
@@ -35,7 +31,7 @@ aEntry.forEach(function(item) {
     aPlugin.push(new HtmlWebpackPlugin({
         filename: item + '.html',
         template: config.sBase + 'pages/' + item + '/' + item + '.ejs',
-        chunks: [item, 'vendor', 'common'],
+        chunks: ['vendor', 'common', item],
         inject: 'body',
         title: item + 'Page',
         minify: {
@@ -50,12 +46,16 @@ aEntry.forEach(function(item) {
 module.exports = merge(baseWebapckConfig, {
     mode: 'production',
     // entry: {
-    //     // vendor: ['vue', 'vuex', 'vue-router', 'vuex-router-sync','vue-resource']
+    //     vendor: ['vue', 'vuex', 'vue-router', 'vuex-router-sync','vue-resource']
     // },
     output: {
         path: config.sDist,
         filename: config.prod.path.script + '[name].[chunkhash:8].js',
-        chunkFilename: config.prod.path.script + "[name].[chunkhash:8].js"
+        // filename: function(chunkData){
+        //     return chunkData.chunk.name === 'manifest' ? '[name].js': config.prod.path.script + "[name].[chunkhash:8].js";
+        // },
+        chunkFilename: config.prod.path.script + "[name].[chunkhash:8].js",
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -146,6 +146,7 @@ module.exports = merge(baseWebapckConfig, {
             name: 'manifest'
         },
         splitChunks: {
+            automaticNameDelimiter:'-',
             cacheGroups: {
                 vendor: {   // 抽离第三方插件
                     test: /vue|vuex|vue-router|vue-router-sync|vue-resource/,   // 指定是node_modules下的第三方包 /[\\/]node_modules[\\/]/
@@ -155,10 +156,38 @@ module.exports = merge(baseWebapckConfig, {
                     priority: 10    
                 },
                 common: { // 抽离自己写的公共代码，utils这个名字可以随意起
+                    test: /[\\/]node_modules[\\/]/,
                     chunks: 'initial',
                     name: 'common',  // 任意命名
-                    minChunks: 2    // 只要超出0字节就生成一个新包
-                }
+                    enforce: true
+                },
+                // 'async-vendors': {
+                //     test: /[\\/]node_modules[\\/]/,
+                //     minChunks: 2,
+                //     chunks: 'async',
+                //     name: 'async-vendors'
+                // }
+                // vendor: {
+                //     test: /node_modules/,
+                //     name: "vendor",
+                //     priority: 10,
+                //     enforce: true
+                // },
+                // // 这里定义的是在分离前被引用过两次的文件，将其一同打包到common.js中，最小为30K
+                // common: {
+                //     name: "common",
+                //     minChunks: 2,
+                //     minSize: 30000
+                // },
+                // vendors: {
+                //     test: /[\\/]node_modules[\\/]/,
+                //     priority: -10
+                // },
+                // default: {
+                //     minChunks: 2,
+                //     priority: -20,
+                //     reuseExistingChunk: true
+                // }
             }
         }
     },

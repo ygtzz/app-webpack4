@@ -37,7 +37,7 @@ const mutations = {
     },
     [types['getUserInfo.error']](state, payload) {
         _.assign(state,{
-            loading:fasle,
+            loading:false,
             err:payload
         })
     }
