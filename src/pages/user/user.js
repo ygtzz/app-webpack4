@@ -1,17 +1,17 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { sync } from 'vuex-router-sync';
-import store from './vuex/store';
+// import store from './vuex/store';
 import cookies from 'js-cookie';
 import 'static/css/normalize.css';
 import 'static/css/quick-layout.css';
 import 'static/css/site.css';
-import './index.scss';
+import './user.scss';
 import routeConfig from './router.js';
 //import FastClick from 'fastclick';
 import App from './app.vue';
 //common Component
-import cHeader from './widget/cHeader.vue';
+// import cHeader from './widget/cHeader.vue';
 import {types} from 'index/vuex/mutation-types';
 require('vue-alert2/dist/vue-alert.css');
 import {Alert,Confirm} from 'vue-alert2';
@@ -21,8 +21,6 @@ Vue.use(Confirm);
 Vue.component('c-cHeader',cHeader);
 
 Vue.use(VueRouter);
-
-
 
 // window.addEventListener('load', () => {
 //   FastClick.attach(document.body)
@@ -52,7 +50,8 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-sync(store, router);
+
+// sync(store, router);
 
 new Vue({
   router,
