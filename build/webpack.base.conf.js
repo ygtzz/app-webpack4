@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var config = require('./config');
 var merge = require('lodash/merge');
 var VueLoaderPlugin = require('vue-loader/lib/plugin');
+var AutoDllPlugin = require('autodll-webpack-plugin');
+var path = require('path');
 var sBase = config.sBase;
 
 process.noDeprecation = true;
@@ -14,7 +16,13 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /\.(js|jsx)$/, loader: "babel-loader", exclude: /node_modules/},
+            {
+                test: /\.(js|jsx)$/,
+                use: [
+                    "babel-loader"
+                ],
+                exclude: /node_modules/
+            },
             {test: /\.(html)$/, loader: 'html-loader'},
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -27,6 +35,15 @@ module.exports = {
         ]
     },
     plugins: [
+        new AutoDllPlugin({
+            inject: true, 
+            filename: '[name].dll.js',
+            context: path.join(__dirname, '..'),
+            path: './static/scripts',
+            entry: {
+              vendor: ['vue', 'vuex', 'vue-router', 'vuex-router-sync','vue-resource']
+            }
+        }),
         new VueLoaderPlugin()
     ],
     resolve:{

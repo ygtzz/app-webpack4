@@ -6,6 +6,7 @@ var config = require('./config');
 // var OpenBrowserPlugin = require('open-browser-webpack-plugin');配
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+const ContentInjectPlugin = require('./contentInjectPlugin');
 
 var aPlugin = [
     //for dev show static images
@@ -31,6 +32,10 @@ aEntry.forEach(function(item){
         title: item + ' Page'
     }));
 });
+
+aPlugin.push(new ContentInjectPlugin({
+    content: 'this is inject conent'
+}))
 
 module.exports = merge(baseWebapckConfig,{
     mode: 'development',    

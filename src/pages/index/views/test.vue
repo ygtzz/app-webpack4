@@ -1,21 +1,7 @@
 <template>
     <div class="test stage">
-        <h2>scroll</h2>
-        <div id="scrollc" class="scrollc">
-            <ul class="scrolls fix">
-                <!-- <li class="scroll-item">1</li>
-                <li class="scroll-item">2</li>
-                <li class="scroll-item">3</li>
-                <li class="scroll-item">4</li>
-                <li class="scroll-item">5</li> -->
-                <li>18210808376</li>
-                <li>15210808376</li>
-                <li>17210808376</li>
-                <li>15210808376</li>
-                <li>17210808376</li>
-                <li>13210808376</li>
-            </ul>
-        </div>
+        <Parent>
+        </Parent>
     </div>
 </template>
 <style lang="scss" scoped>
@@ -40,6 +26,90 @@
 import Vue from 'vue';
 import {MyScroll} from './myscroll';
 
+Vue.component('Child1',{
+  template: '<div>child1</div>',
+  beforeCreate(){
+    console.log('child1 beforeCreate');
+  },
+  created(){
+    console.log('child1 created');
+  },
+  beforeMount(){
+    console.log('child1 beforeMount');
+  },
+  mounted(){
+    console.log('child1 mounted');
+  },
+  beforeUpdate(){
+    console.log('child1 beforeUpdate');
+  },
+  updated(){
+    console.log('child1 updated');
+  },
+  beforeDestroy(){
+    console.log('child1 beforeDestory')
+  },
+  destoryed(){
+    console.log('child1 destoryed')
+  }
+})
+
+Vue.component('Child2',{
+  template: '<div>child2</div>',
+  beforeCreate(){
+    console.log('child2 beforeCreate');
+  },
+  created(){
+    console.log('child2 created');
+  },
+  beforeMount(){
+    console.log('child2 beforeMount');
+  },
+  mounted(){
+    console.log('child2 mounted');
+  },
+  beforeUpdate(){
+    console.log('child2 beforeUpdate');
+  },
+  updated(){
+    console.log('child2 updated');
+  },
+  beforeDestroy(){
+    console.log('child2 beforeDestory')
+  },
+  destoryed(){
+    console.log('child2 destoryed')
+  }
+})
+
+Vue.component('Parent',{
+  template: '<div>parent<Child1 /><Child2 /></div>',
+  beforeCreate(){
+    console.log('parent beforeCreate');
+  },
+  created(){
+    console.log('parent created');
+  },
+  beforeMount(){
+    console.log('parent beforeMount');
+  },
+  mounted(){
+    console.log('parent mounted');
+  },
+  beforeUpdate(){
+    console.log('parent beforeUpdate');
+  },
+  updated(){
+    console.log('parent updated');
+  },
+  beforeDestroy(){
+    console.log('parent beforeDestory')
+  },
+  destoryed(){
+    console.log('parent destoryed')
+  }
+})
+
 export default {
     name:'v-test',
     created() {
@@ -47,14 +117,14 @@ export default {
     },
     mounted(){
         var self = this;
-        self.$nextTick(() => {
-            var myscroll = new MyScroll({
-                container:'#scrollc',
-                direction:'left',
-                step:10,
-                interval:200
-            });
-        });
+        // self.$nextTick(() => {
+        //     var myscroll = new MyScroll({
+        //         container:'#scrollc',
+        //         direction:'left',
+        //         step:10,
+        //         interval:200
+        //     });
+        // });
     },
     data() {
       return {
