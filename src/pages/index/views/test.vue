@@ -1,7 +1,8 @@
 <template>
     <div class="test stage">
-        <Parent>
-        </Parent>
+      fasdf
+        <!-- <Parent>
+        </Parent> -->
     </div>
 </template>
 <style lang="scss" scoped>
@@ -26,90 +27,6 @@
 import Vue from 'vue';
 import {MyScroll} from './myscroll';
 
-Vue.component('Child1',{
-  template: '<div>child1</div>',
-  beforeCreate(){
-    console.log('child1 beforeCreate');
-  },
-  created(){
-    console.log('child1 created');
-  },
-  beforeMount(){
-    console.log('child1 beforeMount');
-  },
-  mounted(){
-    console.log('child1 mounted');
-  },
-  beforeUpdate(){
-    console.log('child1 beforeUpdate');
-  },
-  updated(){
-    console.log('child1 updated');
-  },
-  beforeDestroy(){
-    console.log('child1 beforeDestory')
-  },
-  destoryed(){
-    console.log('child1 destoryed')
-  }
-})
-
-Vue.component('Child2',{
-  template: '<div>child2</div>',
-  beforeCreate(){
-    console.log('child2 beforeCreate');
-  },
-  created(){
-    console.log('child2 created');
-  },
-  beforeMount(){
-    console.log('child2 beforeMount');
-  },
-  mounted(){
-    console.log('child2 mounted');
-  },
-  beforeUpdate(){
-    console.log('child2 beforeUpdate');
-  },
-  updated(){
-    console.log('child2 updated');
-  },
-  beforeDestroy(){
-    console.log('child2 beforeDestory')
-  },
-  destoryed(){
-    console.log('child2 destoryed')
-  }
-})
-
-Vue.component('Parent',{
-  template: '<div>parent<Child1 /><Child2 /></div>',
-  beforeCreate(){
-    console.log('parent beforeCreate');
-  },
-  created(){
-    console.log('parent created');
-  },
-  beforeMount(){
-    console.log('parent beforeMount');
-  },
-  mounted(){
-    console.log('parent mounted');
-  },
-  beforeUpdate(){
-    console.log('parent beforeUpdate');
-  },
-  updated(){
-    console.log('parent updated');
-  },
-  beforeDestroy(){
-    console.log('parent beforeDestory')
-  },
-  destoryed(){
-    console.log('parent destoryed')
-  }
-})
-
 export default {
     name:'v-test',
     created() {
@@ -125,6 +42,17 @@ export default {
         //         interval:200
         //     });
         // });
+        let stu = {
+          name: {
+            firstName: 'zhang'
+          }
+        }
+        console.log('stu: ', stu.name.firstName);
+        console.log('stu: ', stu.age?.lastName.first);
+
+        //nullish
+        let stuAge = stu.age ?? 22;
+        console.log('stuAge: ', stuAge);
     },
     data() {
       return {

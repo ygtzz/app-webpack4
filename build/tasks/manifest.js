@@ -7,7 +7,6 @@ module.exports = function (gulp, plugin, config) {
             .pipe(plugin.inject(gulp.src(sBase + '/**/manifest.*.js'), {
                 starttag: '<!-- inject:manifest -->',
                 transform: function (filePath, file) {
-                    console.log(file);
                     return '<script>' + file.contents.toString('utf8') + '</script>';
                 }
             }))

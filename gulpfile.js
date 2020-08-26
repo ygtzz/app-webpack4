@@ -1,5 +1,5 @@
 var gulp = require('gulp')
-  , seq = require('run-sequence')
+  ,{ series, parallel } = gulp
   , config = require('./build/config')
   , plugins = require('gulp-load-plugins')
   , gulpTaskList = require('fs').readdirSync('./build/tasks/')
@@ -16,6 +16,4 @@ gulpTaskList.forEach(function(taskfile) {
     require('./build/tasks/' + taskfile)(gulp, plugins, config);
 });
 
-gulp.task('default',function(){
-     seq('clean','webpack','manifest');
-});
+gulp.task('default', series('clean','webpack','manifest'));
