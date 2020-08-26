@@ -4,9 +4,8 @@ var merge = require('webpack-merge');
 var baseWebapckConfig = require('./webpack.base.conf');
 var config = require('./config');
 // var OpenBrowserPlugin = require('open-browser-webpack-plugin');配
-const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-const ContentInjectPlugin = require('./contentInjectPlugin');
 
 var aPlugin = [
     //for dev show static images
@@ -28,14 +27,10 @@ aEntry.forEach(function(item){
         filename: item + '.html',
         template: config.sBase + 'pages/' + item + '/' + item + '.ejs',
         chunks: [item],
-        inject: 'body',
+        inject: true,
         title: item + ' Page'
     }));
 });
-
-aPlugin.push(new ContentInjectPlugin({
-    content: 'this is inject conent'
-}))
 
 module.exports = merge(baseWebapckConfig,{
     mode: 'development',    

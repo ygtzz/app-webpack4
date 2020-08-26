@@ -37,15 +37,27 @@ module.exports = {
         ]
     },
     plugins: [
-        new AutoDllPlugin({
-            inject: true, 
-            filename: '[name].dll.js',
-            context: path.join(__dirname, '..'),
-            path: './static/scripts',
-            entry: {
-              vendor: ['vue', 'vuex', 'vue-router', 'vuex-router-sync','vue-resource']
-            }
-        }),
+        //与html-webpack-plguin4.x无法配合
+        // new AutoDllPlugin({
+        //     debug: true,
+        //     inject: true, 
+        //     filename: '[name].dll.js',
+        //     context: path.join(__dirname, '..'),
+        //     path: './static/scripts',
+        //     entry: {
+        //       vendor: ['vue', 'vuex', 'vue-router', 'vuex-router-sync','vue-resource']
+        //     }
+        // }),
+        //依赖于html-webpack-plguin版本
+        // new ContentInjectPlugin({
+        //     contents:{
+        //         rem: function(){
+        //             return fs.readFileSync('./src/static/js/rem.js',{encoding:'utf8'});
+        //         }
+        //     },
+        //     replaceMode: 'all',
+        //     memo: true
+        // }),
         new VueLoaderPlugin()
     ],
     resolve:{
