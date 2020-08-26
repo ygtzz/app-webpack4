@@ -17,7 +17,7 @@
                 </div>
                 <div class="banner-top">
                     <div class="title-wrap tc">
-                        <p class="f40 white">提取绑卡，理财快人一步22</p>
+                        <p class="f40 white">提取绑卡，理财快人一步</p>
                     </div>
                     <div class="bind-wrap tc">
                         <button class="btn btn-bind">绑定银行卡</button>
@@ -89,7 +89,6 @@
                     <p class="f24 g9">{{item.guarantymemo}} · {{item.guarantyway}}</p>
                 </div>
             </div>
-            <!-- <c-keyboard :pwd="'pwd'" :len="6" :show='true' ></c-keyboard> -->
         </div>
         <div class="text-info tc">
             <span class="icon icon-managemoney"></span>
@@ -179,12 +178,9 @@ import BScroll from 'better-scroll';
 import { Swipe, SwipeItem } from 'mint-ui';
 import {fNotifyError} from 'widget/util/util';
 import _ from 'lodash';
-import keyboard from 'index/widget/board/vue-keyboard.js';
-import 'index/widget/board/vue-keyboard.css';
 
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
-Vue.component('c-keyboard',keyboard);
 
 export default {
     name:'v-home',
@@ -201,6 +197,8 @@ export default {
                 self.fixUserHeader();
             }
         });
+        let a = 1;
+        console.log(a+2);
     },
     mounted(){
         this.nNoticeHeight = this.$refs.notice.offsetHeight;

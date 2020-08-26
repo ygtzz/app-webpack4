@@ -3,6 +3,8 @@ var config = require('./config');
 var merge = require('lodash/merge');
 var VueLoaderPlugin = require('vue-loader/lib/plugin');
 var sBase = config.sBase;
+var fs = require('fs');
+var ContentInjectPlugin = require('./contentInjectPlugin');
 
 process.noDeprecation = true;
 module.exports = {
@@ -27,7 +29,22 @@ module.exports = {
         ]
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new ContentInjectPlugin({
+            contents:{
+                content: 'this is inject content',
+                rem: function(){
+                    return fs.readFileSync('./src/static/js/rem.js',{encoding:'utf8'});
+                },
+                other: 'other file content'
+            }
+        }),
+        new webpack.ProgressPlugin((percentage, message, ...args) => {
+            if(percentage == 1){
+                console.info(percentage, message, ...args);
+                //copy files
+            }
+        })
     ],
     resolve:{
         modules: [ "node_modules",sBase,sBase+"pages", sBase+"widget",sBase+'mock'],

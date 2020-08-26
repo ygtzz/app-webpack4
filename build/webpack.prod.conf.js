@@ -143,7 +143,9 @@ module.exports = merge(baseWebapckConfig, {
     optimization: {
         minimize: true,
         runtimeChunk: {
-            name: 'manifest'
+            name: function(entry){
+                return entry.name + '-manifest';
+            }
         },
         splitChunks: {
             automaticNameDelimiter:'-',
@@ -160,28 +162,7 @@ module.exports = merge(baseWebapckConfig, {
                     chunks: 'initial',
                     name: 'common',  // 任意命名
                     enforce: true
-                },
-                // 'async-vendors': {
-                //     test: /[\\/]node_modules[\\/]/,
-                //     minChunks: 2,
-                //     chunks: 'async',
-                //     name: 'async-vendors'
-                // }
-                // // 这里定义的是在分离前被引用过两次的文件，将其一同打包到common.js中，最小为30K
-                // common: {
-                //     name: "common",
-                //     minChunks: 2,
-                //     minSize: 30000
-                // },
-                // vendors: {
-                //     test: /[\\/]node_modules[\\/]/,
-                //     priority: -10
-                // },
-                // default: {
-                //     minChunks: 2,
-                //     priority: -20,
-                //     reuseExistingChunk: true
-                // }
+                }
             }
         }
     },
