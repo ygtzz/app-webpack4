@@ -1,4 +1,19 @@
 {
-  "presets": ["es2015","stage-2"],
-  "plugins": []
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "chrome": "58",
+          "ie": "10"
+        },
+        "corejs": "3", 
+        "useBuiltIns": "usage"
+      }
+    ]
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-object-rest-spread"
+  ]
 }
