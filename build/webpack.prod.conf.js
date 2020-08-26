@@ -4,9 +4,11 @@ var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 var merge = require('webpack-merge');
 var WebpackChunkHash = require('webpack-chunk-hash');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin"); 
+var SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var baseWebapckConfig = require('./webpack.base.conf');
 var config = require('./config');
+var smp = new SpeedMeasurePlugin();
 
 var oEntry = baseWebapckConfig.entry,
     aEntry = Object.keys(oEntry);
@@ -23,7 +25,7 @@ var aPlugin = [
     new LodashModuleReplacementPlugin(),
     new webpack.HashedModuleIdsPlugin(),    
     new WebpackChunkHash(),
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
 ];
 
 //html webpack
@@ -43,11 +45,8 @@ aEntry.forEach(function(item) {
     }));
 });
 
-module.exports = merge(baseWebapckConfig, {
+ var cfg = merge(baseWebapckConfig, {
     mode: 'production',
-    // entry: {
-    //     vendor: ['vue', 'vuex', 'vue-router', 'vuex-router-sync','vue-resource']
-    // },
     output: {
         path: config.sDist,
         filename: config.prod.path.script + '[name].[chunkhash:8].js',
@@ -169,3 +168,7 @@ module.exports = merge(baseWebapckConfig, {
     plugins: aPlugin,
     // devtool: 'cheap-module-source-map'
 });
+
+cfg = smp.wrap(cfg);
+
+module.exports = cfg;

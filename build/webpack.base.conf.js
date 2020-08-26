@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var config = require('./config');
 var merge = require('lodash/merge');
 var VueLoaderPlugin = require('vue-loader/lib/plugin');
+var AutoDllPlugin = require('autodll-webpack-plugin');
+var path = require('path');
 var sBase = config.sBase;
 var fs = require('fs');
 var ContentInjectPlugin = require('./contentInjectPlugin');
@@ -16,7 +18,13 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /\.(js|jsx)$/, loader: "babel-loader", exclude: /node_modules/},
+            {
+                test: /\.(js|jsx)$/,
+                use: [
+                    "babel-loader"
+                ],
+                exclude: /node_modules/
+            },
             {test: /\.(html)$/, loader: 'html-loader'},
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -29,22 +37,16 @@ module.exports = {
         ]
     },
     plugins: [
-        new VueLoaderPlugin(),
-        new ContentInjectPlugin({
-            contents:{
-                content: 'this is inject content',
-                rem: function(){
-                    return fs.readFileSync('./src/static/js/rem.js',{encoding:'utf8'});
-                },
-                other: 'other file content'
+        new AutoDllPlugin({
+            inject: true, 
+            filename: '[name].dll.js',
+            context: path.join(__dirname, '..'),
+            path: './static/scripts',
+            entry: {
+              vendor: ['vue', 'vuex', 'vue-router', 'vuex-router-sync','vue-resource']
             }
         }),
-        new webpack.ProgressPlugin((percentage, message, ...args) => {
-            if(percentage == 1){
-                console.info(percentage, message, ...args);
-                //copy files
-            }
-        })
+        new VueLoaderPlugin()
     ],
     resolve:{
         modules: [ "node_modules",sBase,sBase+"pages", sBase+"widget",sBase+'mock'],

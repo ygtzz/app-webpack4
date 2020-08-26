@@ -8,7 +8,7 @@ module.exports = {
     sDest: './dist',
     entry: {
         index: sBase + 'pages/index/index.js',
-        index1: sBase + 'pages/index1/index1.js'
+        user: sBase + 'pages/user/user.js'
     },
     dev: {
         proxy: proxy,

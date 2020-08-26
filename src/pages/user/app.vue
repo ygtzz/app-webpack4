@@ -1,21 +1,14 @@
 <template>
     <div id="app">
         <div class="container">
-            <header class="top-fixed">
-            </header>
             <section class="body">
                 <router-view></router-view>
             </section>
-            <footer class="bottom-fixed">
-                 <c-footer></c-footer>
-            </footer>
         </div>
     </div>
 </template>
 <script>
 import {mapState} from 'vuex';
-import header from './widget/header.vue';
-import footer from './widget/footer.vue';
 
 export default {
     created(){
@@ -42,8 +35,7 @@ export default {
         }
     },
     components:{
-        'c-header':header,
-        'c-footer':footer
+      
     }
 } 
 </script>

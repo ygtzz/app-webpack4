@@ -38,7 +38,6 @@
 </style>
 <script>
 import Vue from 'vue';
-import {MyScroll} from './myscroll';
 
 export default {
     name:'v-test',
@@ -47,14 +46,6 @@ export default {
     },
     mounted(){
         var self = this;
-        self.$nextTick(() => {
-            var myscroll = new MyScroll({
-                container:'#scrollc',
-                direction:'left',
-                step:10,
-                interval:200
-            });
-        });
     },
     data() {
       return {

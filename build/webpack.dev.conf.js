@@ -3,8 +3,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var merge = require('webpack-merge');
 var baseWebapckConfig = require('./webpack.base.conf');
 var config = require('./config');
-// var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+// var OpenBrowserPlugin = require('open-browser-webpack-plugin');配
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+const ContentInjectPlugin = require('./contentInjectPlugin');
 
 var aPlugin = [
     //for dev show static images
@@ -14,7 +16,8 @@ var aPlugin = [
         __DEV__: JSON.stringify(JSON.parse('true'))
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new CaseSensitivePathsPlugin()
 ];
 
 var oEntry = baseWebapckConfig.entry,
@@ -29,6 +32,10 @@ aEntry.forEach(function(item){
         title: item + ' Page'
     }));
 });
+
+aPlugin.push(new ContentInjectPlugin({
+    content: 'this is inject conent'
+}))
 
 module.exports = merge(baseWebapckConfig,{
     mode: 'development',    
@@ -91,6 +98,6 @@ module.exports = merge(baseWebapckConfig,{
         hot:                true,
         historyApiFallback: true,
         inline:             true,
-        proxy: config.dev.proxy  
+        proxy: config.dev.proxy
     }
 });

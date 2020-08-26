@@ -22,6 +22,8 @@ Vue.component('c-cHeader',cHeader);
 
 Vue.use(VueRouter);
 
+
+
 // window.addEventListener('load', () => {
 //   FastClick.attach(document.body)
 // });
@@ -49,7 +51,6 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
 
 sync(store, router);
 
