@@ -49,10 +49,10 @@ aEntry.forEach(function(item) {
     mode: 'production',
     output: {
         path: config.sDist,
-        filename: config.prod.path.script + '[name].[chunkhash:8].js',
-        // filename: function(chunkData){
-        //     return chunkData.chunk.name === 'manifest' ? '[name].js': config.prod.path.script + "[name].[chunkhash:8].js";
-        // },
+        filename: function(chunkData){
+            let path = config.prod.path.script;
+            return path + (chunkData.chunk.name.includes('manifest') ? '[name].js':  + "[name].[chunkhash:8].js");
+        },
         chunkFilename: config.prod.path.script + "[name].[chunkhash:8].js",
         publicPath: '/'
     },
@@ -140,10 +140,10 @@ aEntry.forEach(function(item) {
         ]
     },
     optimization: {
-        minimize: true,
+        minimize: false,
         runtimeChunk: {
             name: function(entry){
-                return entry.name + '-manifest';
+                return entry.name + '.manifest';
             }
         },
         splitChunks: {

@@ -15,8 +15,12 @@ import App from './app.vue';
 //common Component
 import cHeader from './widget/cHeader.vue';
 import {types} from 'index/vuex/mutation-types';
-require('vue-alert2/dist/vue-alert.css');
+import 'vue-toast5/dist/vue-toast.css';
+import toast from 'vue-toast5';
+import 'vue-alert2/dist/vue-alert.css';
 import {Alert,Confirm} from 'vue-alert2';
+
+Vue.use(toast);
 Vue.use(Alert);
 Vue.use(Confirm);
 
