@@ -20,7 +20,7 @@ import {Alert,Confirm} from 'vue-alert2';
 Vue.use(Alert);
 Vue.use(Confirm);
 
-Vue.component('c-cHeader',cHeader);
+// Vue.component('c-cHeader',cHeader);
 
 Vue.use(VueRouter);
 
@@ -58,6 +58,6 @@ router.beforeEach((to, from, next) => {
 new Vue({
   router,
   el: '#app',
-  store,
+  // store,
   render: h => h(App)
 })

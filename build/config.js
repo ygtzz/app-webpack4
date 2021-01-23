@@ -1,19 +1,25 @@
 var path = require('path');
 var proxy = require('./proxy');
-
-
+var glob = require('glob');
 var sBase = './src/';
 
+var entry = {};
+glob.sync('./src/pages/**/index.ejs').forEach(function(item){
+    if(item){
+        let match = item.match(/\/pages\/(\w*)\//);
+        if(match && match.length > 0){
+            entry[match[1]] = item.replace('.ejs','.js')
+        }
+    }
+});
 
+console.log(entry);
 
 module.exports = {
     sBase: sBase,
     sDist: path.resolve(__dirname, '../dist'),
     sDest: './dist',
-    entry: {
-        index: sBase + 'pages/index/index.js',
-        user: sBase + 'pages/user/user.js'
-    },
+    entry: entry,
     dev: {
         proxy: proxy,
         env: '',

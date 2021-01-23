@@ -32,7 +32,7 @@ var aPlugin = [
 aEntry.forEach(function(item) {
     aPlugin.push(new HtmlWebpackPlugin({
         filename: item + '.html',
-        template: config.sBase + 'pages/' + item + '/' + item + '.ejs',
+        template: config.entry[item].replace('.js','.ejs'),
         chunks: ['vendor', 'common', item],
         inject: 'body',
         title: item + 'Page',
