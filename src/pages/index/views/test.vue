@@ -1,8 +1,7 @@
 <template>
     <div class="test stage">
       fasdf
-        <!-- <Parent>
-        </Parent> -->
+      <lookup title="用户查找" :data="buildData()"></lookup>
     </div>
 </template>
 <style lang="scss" scoped>
@@ -25,7 +24,9 @@
 </style>
 <script>
 import Vue from 'vue';
-import {MyScroll} from './myscroll';
+// import {MyScroll} from './myscroll';
+import lookup from 'widget/lookup';
+// import Lookup from '../../../widget/lookup/lookup.vue';
 
 export default {
     name:'v-test',
@@ -53,17 +54,29 @@ export default {
         //nullish
         let stuAge = stu.age ?? 22;
         console.log('stuAge: ', stuAge);
+
+
+        let obj = {name: 'zhangsan', age: 22}
+        let obj1 = {...obj};
+        console.log(obj1);
     },
     data() {
       return {
-  
+        
       }
     },
     methods:{
-       
+       buildData(){
+         return [
+           {id:1,name:'张三',code:'0801'},
+           {id:2,name:'李四',code:'0802'},
+           {id:3,name:'王五',code:'0803'},
+           {id:4,name:'赵六',code:'0804'}
+         ];
+       }
     },
     components:{
-        
+      lookup
     },
     filters:{
         
