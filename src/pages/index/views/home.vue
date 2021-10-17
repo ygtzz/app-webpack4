@@ -100,46 +100,45 @@
 <style lang="scss" scoped>
     .home{background:#f2f2f2;width:100%;
         .header,.info,.panel{background:#fff}
-        .header{}
     }
     .home-banner{
         .banner-top{
-            height:304px;
+            height: 304rx;
             background-image:url('./common/banner-1px.png');
             background-size:100% 100%;
             background-color:#ff5a00;
-            padding-top:42px;
+            padding-top:42rx;
         }
         .arc{
-            height:24px;
+            height:24rx;
             background-image:url('./home/banner-home-arc.png');
             background-size: 100% 100%;
         }
     }
-    .notice-wrap{height:50px;line-height:50px;font-size:24px;background-color:#fffecb;color:#ff8201;
-        padding-left:24px;padding-right:24px;
+    .notice-wrap{height:50rx;line-height:50rx;font-size:24rx;background-color:#fffecb;color:#ff8201;
+        padding-left:24rx;padding-right:24rx;
     }
-    .close{width:36px;height:36px;line-height:32px;text-align:center;border:2px solid #bbb;border-radius:50%;
-        color:#bbb;margin-top:8px;}
-    .user-wrap{height:106px;}
-    .user{height:106px;padding-left:25px;padding-right:20px;line-height:106px;width:100%;
+    .close{width:36rx;height:36rx;line-height:32rx;text-align:center;border:2rx solid #bbb;border-radius:50%;
+        color:#bbb;margin-top:8rx;}
+    .user-wrap{height:106rx;}
+    .user{height:106rx;padding-left:25rx;padding-right:20rx;line-height:106rx;width:100%;
         top:0;background-image:url('./common/banner-1px.png');}
     .user-fix{position:fixed;transform:scale(1);z-index:9999;top:0;left:0;}
-    .icon-tree{background-image:url('./home/tree@2x.png');width:70px;height:80px;
-        margin-top:12px;
+    .icon-tree{background-image:url('./home/tree@2x.png');width:70rx;height:80rx;
+        margin-top:12rx;
     }    
     .avatar{
-        height:60px;width:60px;margin-right:24px;
+        height:60rx;width:60rx;margin-right:24rx;
         img{border-radius:50%;}
         img{width:100%;height:100%;}  
     }    
     .title-wrap{}
-    .bind-wrap{margin-top:45px;}
-    .btn-bind{background-color:#fff072;color:#ff5000;border:0;border-radius:4px;
-        width:314px;height:82px;
-        font-size:36px;
+    .bind-wrap{margin-top:45rx;}
+    .btn-bind{background-color:#fff072;color:#ff5000;border:0;border-radius:4rx;
+        width:314rx;height:82rx;
+        font-size:36rx;
     }
-    .slide-wrap{height:180px;}
+    .slide-wrap{height:180rx;}
     :global(.slide-list .mint-swipe-indicators){
         left:90%
     }
@@ -148,29 +147,29 @@
     }
     .slide{height:100%;
            img{width:100%;height:100%;}}
-    .panel{background-color:#fff;margin-top:20px;
-        border-top:1px solid #e5e5e5;
-        border-bottom:1px solid #e5e5e5;
-        .header{height:100px;line-height:100px;border-bottom:1px solid #e5e5e5;
-             padding-left:26px;padding-right:26px;
+    .panel{background-color:#fff;margin-top:20rx;
+        border-top:1rx solid #e5e5e5;
+        border-bottom:1rx solid #e5e5e5;
+        .header{height:100rx;line-height:100rx;border-bottom:1rx solid #e5e5e5;
+             padding-left:26rx;padding-right:26rx;
             *{vertical-align:middle;}
         }
-        .body{padding-top:47px;padding-bottom:60px;position:relative;}
-        .left{padding-left:60px;padding-right:40px;
-            border-right:1px solid #e5e5e5;
+        .body{padding-top:47rx;padding-bottom:60rx;position:relative;}
+        .left{padding-left:60rx;padding-right:40rx;
+            border-right:1rx solid #e5e5e5;
         }
-        .right{padding-left:44px;}
+        .right{padding-left:44rx;}
     }
-    .fast{.body{padding:26px;}}
+    .fast{.body{padding:26rx;}}
     .fast-wrap{width:100%;}
-    .fast-list{width:1050px;}
-    .fast-item{border:1px solid #e5e5e5;display:inline-block;padding:30px;
+    .fast-list{width:1050rx;}
+    .fast-item{border:1rx solid #e5e5e5;display:inline-block;padding:30rx;
         text-align:center;
-        &:not(:last-child){margin-right:30px;}
+        &:not(:last-child){margin-right:30rx;}
     }
-    .fast-title{color:#7a7a7a;font-size:28px}    
-    .text-info{height:95px;line-height:95px;}
-    .icon-managemoney{background-image:url('./home/managemoney@2x.png');width:54px;height:27px;}
+    .fast-title{color:#7a7a7a;font-size:28rx}    
+    .text-info{height:95rx;line-height:95rx;}
+    .icon-managemoney{background-image:url('./home/managemoney@2x.png');width:54rx;height:27rx;}
 </style>
 <script>
 import Vue from 'vue';
