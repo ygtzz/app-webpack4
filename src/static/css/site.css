@@ -30,7 +30,7 @@ html {
 ul{list-style:none;}
 ul,li,p{margin:0;padding:0}
 .dot{background-color:#f43531;border-radius:50%;position:absolute;z-index:2;}
-.stage{position:absolute;top:0;left:0;right:0;bottom:0;z-index:10;background-color:#F1F0F6;}
+/* .stage{position:absolute;top:0;left:0;right:0;bottom:0;z-index:10;background-color:#F1F0F6;} */
 .icon{display:inline-block;background-size:contain;background-position:center;background-repeat:no-repeat;}
 .gray{color:#B1B5B9}
 .s9{transform:scale(.9)}

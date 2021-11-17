@@ -1,11 +1,16 @@
 <template>
-    <div class="test stage">
-      fasdf
-        <!-- <Parent>
-        </Parent> -->
+    <div class="test">
+        <div class="root">
+            <SortableList v-model="items">
+                <SortableItem v-for="(item, index) in items" :index="index" :key="index" :item="item"/>
+            </SortableList>
+        </div>
     </div>
 </template>
 <style lang="scss" scoped>
+    .root {
+      width: 60%;
+    }
     .scrollc{height:400px;width:100%;overflow:hidden;position:relative;}
     .scrolls{position:relative;}
     .scrolls-h .scroll-item{float:left;}
@@ -22,10 +27,33 @@
         font-size:100px;text-align:center;height:400px;
         background-color:lightblue;line-height:400px;
     }
+    .list-item{
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      list-style: none;
+    }
 </style>
 <script>
 import Vue from 'vue';
-import {MyScroll} from './myscroll';
+import { ContainerMixin, ElementMixin } from 'vue-slicksort';
+
+const SortableList = {
+  mixins: [ContainerMixin],
+  template: `
+    <ul class="list">
+      <slot />
+    </ul>
+  `
+};
+
+const SortableItem = {
+  mixins: [ElementMixin],
+  props: ['item'],
+  template: `
+    <li class="list-item">{{item}}</li>
+  `
+};
 
 export default {
     name:'v-test',
@@ -34,36 +62,18 @@ export default {
     },
     mounted(){
         var self = this;
-        // self.$nextTick(() => {
-        //     var myscroll = new MyScroll({
-        //         container:'#scrollc',
-        //         direction:'left',
-        //         step:10,
-        //         interval:200
-        //     });
-        // });
-        let stu = {
-          name: {
-            firstName: 'zhang'
-          }
-        }
-        console.log('stu: ', stu.name.firstName);
-        console.log('stu: ', stu.age?.lastName.first);
-
-        //nullish
-        let stuAge = stu.age ?? 22;
-        console.log('stuAge: ', stuAge);
     },
     data() {
       return {
-  
+          items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8']
       }
     },
     methods:{
        
     },
     components:{
-        
+        SortableItem,
+        SortableList
     },
     filters:{
         
