@@ -31,7 +31,7 @@ const test = resolve => {
 }
 
 export default [
-    { path: '/', redirect:'/home'},
+    { path: '/', redirect:'/test'},
     { 
         path: '/home', 
         name:'home',

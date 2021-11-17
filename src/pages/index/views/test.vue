@@ -1,10 +1,7 @@
 <template>
-    <div class="test">
-        <div class="root">
-            <SortableList v-model="items">
-                <SortableItem v-for="(item, index) in items" :index="index" :key="index" :item="item"/>
-            </SortableList>
-        </div>
+    <div class="test stage">
+      fasdf
+      <lookup title="用户查找" :data="buildData()"></lookup>
     </div>
 </template>
 <style lang="scss" scoped>
@@ -36,24 +33,9 @@
 </style>
 <script>
 import Vue from 'vue';
-import { ContainerMixin, ElementMixin } from 'vue-slicksort';
-
-const SortableList = {
-  mixins: [ContainerMixin],
-  template: `
-    <ul class="list">
-      <slot />
-    </ul>
-  `
-};
-
-const SortableItem = {
-  mixins: [ElementMixin],
-  props: ['item'],
-  template: `
-    <li class="list-item">{{item}}</li>
-  `
-};
+// import {MyScroll} from './myscroll';
+import lookup from 'widget/lookup';
+// import Lookup from '../../../widget/lookup/lookup.vue';
 
 export default {
     name:'v-test',
@@ -62,18 +44,48 @@ export default {
     },
     mounted(){
         var self = this;
+        // self.$nextTick(() => {
+        //     var myscroll = new MyScroll({
+        //         container:'#scrollc',
+        //         direction:'left',
+        //         step:10,
+        //         interval:200
+        //     });
+        // });
+        let stu = {
+          name: {
+            firstName: 'zhang'
+          }
+        }
+        console.log('stu: ', stu.name.firstName);
+        console.log('stu: ', stu.age?.lastName.first);
+
+        //nullish
+        let stuAge = stu.age ?? 22;
+        console.log('stuAge: ', stuAge);
+
+
+        let obj = {name: 'zhangsan', age: 22}
+        let obj1 = {...obj};
+        console.log(obj1);
     },
     data() {
       return {
-          items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8']
+        
       }
     },
     methods:{
-       
+       buildData(){
+         return [
+           {id:1,name:'张三',code:'0801'},
+           {id:2,name:'李四',code:'0802'},
+           {id:3,name:'王五',code:'0803'},
+           {id:4,name:'赵六',code:'0804'}
+         ];
+       }
     },
     components:{
-        SortableItem,
-        SortableList
+      lookup
     },
     filters:{
         

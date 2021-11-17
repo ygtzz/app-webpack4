@@ -1,15 +1,25 @@
 var path = require('path');
 var proxy = require('./proxy');
-
+var glob = require('glob');
 var sBase = './src/';
+
+var entry = {};
+glob.sync('./src/pages/**/index.ejs').forEach(function(item){
+    if(item){
+        let match = item.match(/\/pages\/(\w*)\//);
+        if(match && match.length > 0){
+            entry[match[1]] = item.replace('.ejs','.js')
+        }
+    }
+});
+
+console.log(entry);
+
 module.exports = {
     sBase: sBase,
     sDist: path.resolve(__dirname, '../dist'),
     sDest: './dist',
-    entry: {
-        index: sBase + 'pages/index/index.js',
-        user: sBase + 'pages/user/user.js'
-    },
+    entry: entry,
     dev: {
         proxy: proxy,
         env: '',
@@ -27,28 +37,13 @@ module.exports = {
             style: 'static/style/'
         }
     },
-    designWidth:750,
-    baseSize:16,
-    enableRem:true,
-    // postcss-plugin-px2rem 的配置，详细描述参考：https://github.com/ant-tool/postcss-plugin-px2rem
-    // 要修改源码index.js的propBlackList配置，使用===代替indexOf
-    px2remOptions: {
-        rootValue: 750 / 16,
-        unitPrecision: 5,
-        propWhiteList: [],
-        propBlackList: ['border-bottom','border-top','border-left','border-right','border','filter'],
-        selectorBlackList: ['ignore'],
-        ignoreIdentifier: false,
-        replace: true,
-        mediaQuery: false,
-        minPixelValue: 0
-    },
+    enableRem: true,
     px2rem:{
-        remUnit:750 / 16,
+        remUnit: 1,
         threeVersion:false,
         remVersion:true,
         baseDpr:2,
         remPrecision:6,
-        dprList:[2,3]
+        dprList: [2,3]
     }
 }

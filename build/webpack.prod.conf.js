@@ -32,7 +32,7 @@ var aPlugin = [
 aEntry.forEach(function(item) {
     aPlugin.push(new HtmlWebpackPlugin({
         filename: item + '.html',
-        template: config.sBase + 'pages/' + item + '/' + item + '.ejs',
+        template: config.entry[item].replace('.js','.ejs'),
         chunks: ['vendor', 'common', item],
         inject: 'body',
         title: item + 'Page',
@@ -112,29 +112,7 @@ aEntry.forEach(function(item) {
                             limit:2048,
                             name:'/static/images/[name].[ext]'
                         }
-                    },
-                    // {
-                    //     loader:'image-webpack-loader',
-                    //     options:{
-                    //         mozjpeg: {
-                    //             quality: 65
-                    //         },
-                    //         pngquant:{
-                    //             quality: "65-90",
-                    //             speed: 4
-                    //         },
-                    //         svgo:{
-                    //             plugins: [
-                    //                 {
-                    //                 removeViewBox: false
-                    //                 },
-                    //                 {
-                    //                 removeEmptyAttrs: false
-                    //                 }
-                    //             ]
-                    //         }
-                    //     }
-                    // }
+                    }
                 ]
             }
         ]
