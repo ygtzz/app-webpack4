@@ -144,7 +144,7 @@ aEntry.forEach(function(item) {
         }
     },
     plugins: aPlugin,
-    // devtool: 'cheap-module-source-map'
+    devtool: 'source-map'
 });
 
 cfg = smp.wrap(cfg);

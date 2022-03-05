@@ -5,8 +5,6 @@ import VueRouter from 'vue-router';
 import { sync } from 'vuex-router-sync';
 // import store from './vuex/store';
 import cookies from 'js-cookie';
-import 'static/css/normalize.css';
-import 'static/css/quick-layout.css';
 import 'static/css/site.css';
 import './user.scss';
 import routeConfig from './router.js';
